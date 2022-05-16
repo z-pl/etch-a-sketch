@@ -13,7 +13,6 @@ body {
 
 .grid-container {
   display: grid;
-  color: aqua;
   background-color: rgb(240, 239, 239);
 }
 
@@ -25,6 +24,7 @@ body {
 }
 
 .grid-item:hover {
+  opacity: 10%;
   background-color: black;
 }
 

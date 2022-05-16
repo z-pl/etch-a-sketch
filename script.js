@@ -6,25 +6,29 @@ const smallPixelBtn = document.querySelector(".canvas-small-btn");
 const mediumPixelBtn = document.querySelector(".canvas-medium-btn");
 const largePixelBtn = document.querySelector(".canvas-large-btn");
 
+const colorPaletteBtns = document.querySelectorAll(".color");
+console.log(colorPaletteBtns);
+
 let canvasSize = "canvas-small";
 let bToggleActiveDraw = false;
 let bToggleEraser = false;
+let currentColor = "black";
 //let i = 1;
 for (let j = 0; j < 12000; j += 1) {
   gridContainer.insertAdjacentHTML("beforeend", `<div class="grid-item"></div>`);
   const gridItem = gridContainer.lastElementChild;
   //i++;
     gridItem.addEventListener('mouseenter', (event)=> {
-      activeDrawingTool(gridItem);
+      activeDrawingTool(gridItem, currentColor);
     })
 }
 
-function activeDrawingTool(gridElement) {
+function activeDrawingTool(gridElement, color) {
   if (bToggleActiveDraw) {
-    gridElement.style.backgroundColor = "black";
+    gridElement.style.backgroundColor = color;
   }
   else if (bToggleEraser) {
-    gridElement.style.backgroundColor = "white";
+    gridElement.style.backgroundColor = "#f0efef";
   }
 }
 
@@ -35,8 +39,8 @@ function createCanvasBoard(rowSize ) {
     const gridItem = gridContainer.lastElementChild;
     //i++;
       gridItem.addEventListener('mouseenter', (event)=> {
-        activeDrawingTool(gridItem);
-      })
+      activeDrawingTool(gridItem, currentColor);
+    })
   }
 }
 
@@ -49,6 +53,13 @@ function toggleEraser() {
   bToggleEraser  = !bToggleEraser;
   bToggleActiveDraw  = false;
 }
+
+colorPaletteBtns.forEach((colorBtn) => {
+  colorBtn.addEventListener("click", (e)=> {
+    currentColor = colorBtn.classList[2];
+  })
+})
+
 
 /// Toggle drawing tools
 document.addEventListener("keydown", (e) => {
