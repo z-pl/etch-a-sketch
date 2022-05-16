@@ -13,10 +13,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(60, 10px);
-  grid-auto-rows: 10px;
   color: aqua;
-  border: 0;
   background-color: rgb(240, 239, 239);
 }
 
@@ -26,4 +23,19 @@ body {
 
 .header {
   height: 100px;
+}
+
+.grid-container.canvas-small {
+  grid-template-columns: repeat(120, 5px);
+  grid-auto-rows: 5px;
+}
+
+.grid-container.canvas-medium {
+  grid-template-columns: repeat(60, 10px);
+  grid-auto-rows: 10px;
+}
+
+.grid-container.canvas-large {
+  grid-template-columns: repeat(30, 20px);
+  grid-auto-rows: 20px;
 }
